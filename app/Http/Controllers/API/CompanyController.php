@@ -51,7 +51,7 @@ class CompanyController extends Controller
             }
             $company = Company::create([
                 'name' => $request->name,
-                'logo' => $path,
+                'logo' => isset($path) ? $path : '',
 
             ]);
 
@@ -59,7 +59,7 @@ class CompanyController extends Controller
                 throw new Exception('Company Not Created');
             }
 
-            $user = User::find(Auth::user());
+            $user = Auth::user();
             $user->companies()->attach($company->id);
 
             return ResponseFormatter::success($company, 'Company Created');

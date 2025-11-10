@@ -1,6 +1,7 @@
 <?php
 
 use Laravel\Sanctum\Sanctum;
+use App\Http\Middleware\VerifyCsrfToken;
 
 return [
 
